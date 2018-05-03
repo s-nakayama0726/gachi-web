@@ -1,0 +1,52 @@
+h2 {
+  font-family: 'KillMe';
+}
+
+.next_detail {
+  font-family: 'KillMe';
+  box-shadow: 20px 10px 7px 10px #666;
+  padding: 0 50px 50px 50px;
+  margin-bottom: 10px;
+  border:1px solid #000;
+}
+
+.profile img {
+  width: 200px;
+  height: 200px;
+  object-fit: contain;
+}
+
+div .otaku {
+  margin-top: 20px;
+}
+
+.otaku_name {
+  font-size: 40px;
+}
+
+.attend_otaku img {
+  width: 60px;
+  height: 60px;
+  padding: 0 10px 0 0;
+  object-fit: contain;
+}
+
+.oseru_btn {
+  margin-right: 0;
+  background-color: royalblue;
+  color: white;
+}
+
+.osenai_btn {
+  background-color: tomato;
+  color: white;
+}
+
+.btn-light {
+  background-color: white;
+  border-color: black;
+}
+
+.gachi-link-area {
+  margin-bottom: 15px;
+}

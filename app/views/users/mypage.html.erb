@@ -1,0 +1,68 @@
+<div class="container">
+	<h1>ガチメイト</h1>
+</div>
+
+<div class="container">
+	<div class="text-center gachi-link-area">
+		<a href="/gachimate/index"><button type="button" class="btn btn-light gachi-link-btn">ガチメイト一覧</button></a>
+		<% if @user %>
+			<a href="/gachimate/mypage"><button type="button" class="btn btn-light gachi-link-btn">マイページ</button></a>
+		<% else %>
+			マイページ(未ログイン)
+		<% end %>
+	</div>
+</div>
+
+<div class="container">
+	<p>ようこそ <%= @user.name %> さん！
+</div>
+
+
+<div class="container profile">
+	<p class="mate_name text-center"><%= @user.name %></p>
+	<%= image_tag(get_prof_image_user_path(@user.id), :class => "center-block") %>
+	<a href="#" data-toggle="modal" data-target="#favorite_form">
+		<p class="mate_attribute text-center"><span class="label label-default"><%= @user.favorite %>推し</span></p>
+	</a>
+	<div class="modal fade" id="favorite_form"  tabindex="-1" role="dialog" aria-labelledby="FavoriteFormModal" aria-hidden="true">
+		<%= form_tag("/gachimate/update_favorite/#{@user.id}", method: :post) do %>
+		<div class="modal-dialog" role="document">
+    		<div class="modal-content">
+    			<div class="modal-header">
+        			<p class="modal-title" id="FavoriteFormModal">推し変</p>
+      			</div>
+      			<div class="modal-body">
+					<input id="input_favorite" name="favorite" type="text" class="text" value="<%= @user.favorite %>" /> 推し
+				</div>
+		      	<div class="modal-footer">
+        			<button type="button" class="btn btn-secondary" data-dismiss="modal">閉じる</button>
+        			<button type="submit" class="btn btn-primary">変更を保存</button>
+      			</div>
+			</div>
+		</div>
+		<% end %>
+	</div>
+	<div class="row">
+		<div class="col-xs-offset-1 col-xs-4">
+			<p>推せるわ<span class="badge"><%= @user.get_good_evaluation_count %></p>
+		</div>
+		<div class="col-xs-offset-1 col-xs-5">
+			<p>推せねーわ <span class="badge"><%= @user.get_bad_evaluation_count %></p>
+		</div>
+	</div>
+</div>
+
+<div class="container">
+	<h2>―オタク活動履歴</h2>
+	<ul>
+		<% @user.activity_logs.order("created_at desc").each do | activity_log | %>
+		<li><%= activity_log.log_message %></li>
+		<% end %>
+	</ul>
+	<h2>―推され履歴</h2>
+	<ul>
+		<% @user.evaluation_logs.order("created_at desc").each do | evaluation_log | %>
+			<li><a href="/gachimate/show/<%= evaluation_log.sender_id %>"><%= User.find_by_id(evaluation_log.sender_id).name %></a> さんから <%= evaluation_log.log_message %></a></li>
+		<% end %>
+	</ul>
+</div>

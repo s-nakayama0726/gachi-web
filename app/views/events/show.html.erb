@@ -41,17 +41,24 @@
 </div>
 <br>
 <div class="container">
-	<button type="button" class="btn btn-primary btn-lg btn-block">ツイッターと連携して参加する</button>
+	<a href="/events/attend/<%= @id %>"><button type="button" class="btn btn-primary btn-lg btn-block">ツイッターと連携して参加する</button></a>
 </div>
 <hr>
 <div class="container">
 	<h2>参加者一覧</h2>
 	<hr>
+	<% if @event.attends %>
+	<% @event.attends.each do | attend | %>
 	<div class="row attend_otaku col-xs-12 col-md-7 col-sm-7">
-		<img src="/assets/otaku/shingo.jpg" class="pull-left">
-		<p class="attend_otaku_name">SHINGO</p>
-		<p class="attend_otaku_attribute"><span class="label label-default">THE IDOLM@STER</span><p>
+		<a href="/gachimate/show/<%= attend.user.id %>">
+			<%= image_tag(get_prof_image_user_path(attend.user.id), :class => "pull-left") %>
+			<p class="attend_otaku_name"><%= attend.user.name %></p>
+			<p class="attend_otaku_attribute"><span class="label label-default"><%= attend.user.favorite %></label> 推し<p>
+		</a>
 	</div>
+	<% end %>
+	<% end %>
+<!--
 	<div class="row attend_otaku col-xs-12 col-md-5 col-sm-5">
 		<img src="/assets/otaku/shingo.jpg" class="pull-left">
 		<p class="attend_otaku_name">SHINGO</p>
@@ -77,6 +84,7 @@
 		<p class="attend_otaku_name">SHINGO</p>
 		<p class="attend_otaku_attribute"><span class="label label-default">THE IDOLM@STER</span><p>
 	</div>
+-->
 </div>
 <hr>
 <div class="container">

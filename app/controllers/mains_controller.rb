@@ -1,4 +1,4 @@
-class MainController < ApplicationController
+class MainsController < ApplicationController
   def index
     
   end
@@ -8,6 +8,10 @@ class MainController < ApplicationController
   end
   
   def otaku
+    
+  end
+  
+  def attend
     
   end
 end

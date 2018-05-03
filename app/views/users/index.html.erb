@@ -1,0 +1,36 @@
+<div class="container">
+	<h1>ガチメイト</h1>
+</div>
+<div class="container">
+	<div class="text-center gachi-link-area">
+		<a href="/gachimate/index"><button type="button" class="btn btn-light gachi-link-btn">ガチメイト一覧</button></a>
+		<% if @user %>
+			<a href="/gachimate/mypage"><button type="button" class="btn btn-light gachi-link-btn">マイページ</button></a>
+		<% else %>
+			マイページ(未ログイン)
+		<% end %>
+	</div>
+</div>
+
+<div class="container">
+<% if @user %>
+	<p>ようこそ <%= @user.name %> さん！
+<% else %>
+	<%= form_tag("/users", :method => :post) do %>
+		<button type="submit" class="btn btn-primary btn-lg btn-block">ツイッターでログイン</button>
+	<% end %>
+<% end %>
+</div>
+
+<div class="container">
+	<h2>―ガチメイト一覧</h2>
+	<% @users.each do | user | %>
+	<div class="row attend_otaku col-md-7 col-sm-7">
+		<a href="/gachimate/show/<%= user.id %>">
+			<%= image_tag(get_prof_image_user_path(user.id), :class => "pull-left") %>
+			<p class="attend_otaku_name"><%= user.name %></p>
+			<p class="attend_otaku_attribute"><span class="label label-default"><%= user.favorite %>推し</span><p>
+		</a>
+	</div>
+	<% end %>
+</div>
