@@ -1,5 +1,5 @@
 class UsersController < ApplicationController
-  # before_action :login_check, only: [:mypage, :update_favorite]
+  before_action :set_login_user, only: [:index, :show, :mypage]
   
   def callback
     user = User.find_or_create_from_auth(request.env['omniauth.auth'])
@@ -56,5 +56,12 @@ class UsersController < ApplicationController
     end
     
     redirect_to :action => "index"
+  end
+  
+private
+  def set_login_user
+    if session[:user_id]
+      @login_user = User.find_by_id(session[:user_id])
+    end
   end
 end

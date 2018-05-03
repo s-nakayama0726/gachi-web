@@ -5,7 +5,7 @@
 <div class="container">
 	<div class="text-center gachi-link-area">
 		<a href="/gachimate/index"><button type="button" class="btn btn-light gachi-link-btn">ガチメイト一覧</button></a>
-		<% if @user %>
+		<% if @login_user %>
 			<a href="/gachimate/mypage"><button type="button" class="btn btn-light gachi-link-btn">マイページ</button></a>
 		<% else %>
 			マイページ(未ログイン)
@@ -14,7 +14,7 @@
 </div>
 
 <div class="container">
-	<p>ようこそ <%= @user.name %> さん！
+	<p>ようこそ <%= @login_user.name %> さん！
 </div>
 
 

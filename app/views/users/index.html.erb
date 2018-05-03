@@ -4,7 +4,7 @@
 <div class="container">
 	<div class="text-center gachi-link-area">
 		<a href="/gachimate/index"><button type="button" class="btn btn-light gachi-link-btn">ガチメイト一覧</button></a>
-		<% if @user %>
+		<% if @login_user %>
 			<a href="/gachimate/mypage"><button type="button" class="btn btn-light gachi-link-btn">マイページ</button></a>
 		<% else %>
 			マイページ(未ログイン)
@@ -13,8 +13,8 @@
 </div>
 
 <div class="container">
-<% if @user %>
-	<p>ようこそ <%= @user.name %> さん！
+<% if @login_user %>
+	<p>ようこそ <%= @login_user.name %> さん！
 <% else %>
 	<%= form_tag("/users", :method => :post) do %>
 		<button type="submit" class="btn btn-primary btn-lg btn-block">ツイッターでログイン</button>
