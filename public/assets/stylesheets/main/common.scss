@@ -1,0 +1,38 @@
+body {
+	padding-top: 50px;
+}
+
+.navbar {
+	margin: 0 0 0 0;
+}
+
+.navbar-header {
+	background-color: DeepPink;
+}
+
+.navbar-header .navbar-brand {
+	color: white;
+	font-family: 'KillMe';
+}
+
+.navbar-toggle {
+	background-color: white;
+}
+
+footer {
+	background-color: DeepPink;
+	height: 30px;
+	padding-top: 5px;
+	padding-left: 15px;
+	font-family: 'KillMe';
+	margin-top: 15px;
+}
+
+h1 {
+	font-family: 'KillMe';
+	font-size: 24px;
+}
+
+.text-muted {
+	color: white;
+}

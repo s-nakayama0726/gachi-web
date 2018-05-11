@@ -1,0 +1,25 @@
+.jumbotron {
+  position: relative;
+  background: url("/assets/top/header.png") center center;
+  background-size: cover;
+  
+  h1 {
+    color: DeepPink;
+  }
+  
+  p {
+    font-family: 'KillMe';
+    color: DeepPink;
+    font-size: 1.5em;
+  }
+}
+
+.jumbotron::before {
+  content:"";
+  display: block;
+  padding-top: 60%; /*.jumbotronのwidthに対して高さ75%に保つ*/
+}
+
+.content_area {
+  background-color: gainsboro;
+}
