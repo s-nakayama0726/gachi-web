@@ -24,8 +24,8 @@ class User < ApplicationRecord
       user.name = name
       user.favorite = "ガチ恋ガーデン"
       user.prof_image = prof_image.read
+      user.activity_logs.build.save_activity_log(user.name " さんがガチメイトになりました！ようこそ！")
     end
-    user.activity_logs.build.save_activity_log(user.name " さんがガチメイトになりました！ようこそ！")
   end
 
   def get_good_evaluation_count
