@@ -26,6 +26,9 @@ class UsersController < ApplicationController
   end
   
   def show
+    if session[:user_id].to_i == params[:id].to_i
+      redirect_to :action => "mypage"
+    end
     @user = User.find_by_id(params[:id])
   end
   

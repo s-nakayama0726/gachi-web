@@ -15,7 +15,6 @@ class User < ApplicationRecord
   def self.find_or_create_from_auth(auth)
     provider = auth[:provider]
     uid = auth[:uid]
-    #name = auth[:info][:nickname]
     name = auth[:extra][:raw_info][:name]
     
     prof_image_url = auth[:info][:image]
@@ -26,6 +25,7 @@ class User < ApplicationRecord
       user.favorite = "ガチ恋ガーデン"
       user.prof_image = prof_image.read
     end
+    user.activity_logs.build.save_activity_log(user.name " さんがガチメイトになりました！ようこそ！")
   end
 
   def get_good_evaluation_count

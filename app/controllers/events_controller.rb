@@ -17,7 +17,7 @@ class EventsController < ApplicationController
         attend.event_id = params[:id]
         attend.save
       end
-      user.activity_logs.build.save_activity_log(event.name + " に参加表明しましたｗ")
+      user.activity_logs.build.save_activity_log(event.name + " に参加表明しました")
       redirect_to :action => "show", :id => params[:id] 
     end
   end

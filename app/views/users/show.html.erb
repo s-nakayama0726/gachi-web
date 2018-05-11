@@ -26,21 +26,31 @@
 	<p class="mate_name text-center"><%= @user.name %></p>
 	<%= image_tag(get_prof_image_user_path(@user.id), :class => "center-block") %>
 	<p class="mate_attribute text-center"><%= @user.favorite %> 推し</p>
-	<div class="row">
-		<%= form_tag("/users/" + @user.id.to_s + "/save_evaluation", :method => :post) do %>
-			<%= hidden_field_tag "evaluation", Evaluation::GOOD_EVALUATION %>
+	<% if @login_user %>
+		<div class="row">
+			<%= form_tag("/users/" + @user.id.to_s + "/save_evaluation", :method => :post) do %>
+				<%= hidden_field_tag "evaluation", Evaluation::GOOD_EVALUATION %>
+				<div class="col-xs-offset-1 col-xs-4">
+					<button type="submit" class="btn oseru_btn">推せるわ<span class="badge"><%= @user.get_good_evaluation_count %></span></button>
+				</div>
+			<% end %>
+			<%= form_tag("/users/" + @user.id.to_s + "/save_evaluation", :method => :post) do %>
+				<%= hidden_field_tag "evaluation", Evaluation::BAD_EVALUATION %>
+				<div class="col-xs-offset-1 col-xs-4">
+					<button type="submit" class="btn osenai_btn">推せねーわ <span class="badge"><%= @user.get_bad_evaluation_count %></span></button>
+				</div>
+			<% end %>
+		</div>
+	<% else %>
+		<div class="row">
 			<div class="col-xs-offset-1 col-xs-4">
-				<button type="submit" class="btn oseru_btn">推せるわ<span class="badge"><%= @user.get_good_evaluation_count %></span></button>
+				<p>推せるわ<span class="badge"><%= @user.get_good_evaluation_count %></p>
 			</div>
-		<% end %>
-		<%= form_tag("/users/" + @user.id.to_s + "/save_evaluation", :method => :post) do %>
-			<%= hidden_field_tag "evaluation", Evaluation::BAD_EVALUATION %>
-			<div class="col-xs-offset-1 col-xs-4">
-				<button type="submit" class="btn osenai_btn">推せねーわ <span class="badge"><%= @user.get_bad_evaluation_count %></span></button>
+			<div class="col-xs-offset-1 col-xs-5">
+				<p>推せねーわ <span class="badge"><%= @user.get_bad_evaluation_count %></p>
 			</div>
-		<% end %>
-	</div>
-	
+		</div>
+	<% end %>
 </div>
 <div class="container">
 	<h2>―オタク活動履歴</h2>

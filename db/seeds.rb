@@ -5,6 +5,6 @@
 #
 #   movies = Movie.create([{ name: 'Star Wars' }, { name: 'Lord of the Rings' }])
 #   Character.create(name: 'Luke', movie: movies.first)
-Event.create(:name => "test_event")
+Event.create(:name => "2018年06月24日ガチ恋ガーデン")
 Evaluation.create(:evaluation_param => 0)
 Evaluation.create(:evaluation_param => 1)
