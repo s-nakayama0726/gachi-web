@@ -21,7 +21,7 @@ class User < ApplicationRecord
     prof_image_url = auth[:info][:image]
     prof_image = open(prof_image_url)
 
-    self.find_or_create_by(provider: provider, uid: uid) do |user|
+    user = self.find_or_create_by(provider: provider, uid: uid) do |user|
       user.name = name
       user.favorite = "ガチ恋ガーデン"
       user.prof_image = prof_image.read
