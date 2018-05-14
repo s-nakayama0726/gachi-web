@@ -29,8 +29,10 @@ class User < ApplicationRecord
     end
     
     if create_flg == 1
-    	user.activity_logs.build.save_activity_log(user.name " さんがガチメイトになりました！ようこそ！")
+    	user.activity_logs.build.save_activity_log(user.name + " さんがガチメイトになりました！ようこそ！")
     end
+    
+    return user;
   end
 
   def get_good_evaluation_count
