@@ -16,6 +16,7 @@ class User < ApplicationRecord
     provider = auth[:provider]
     uid = auth[:uid]
     name = auth[:extra][:raw_info][:name]
+    create_flg = 0
     
     prof_image_url = auth[:info][:image]
     prof_image = open(prof_image_url)
@@ -24,7 +25,11 @@ class User < ApplicationRecord
       user.name = name
       user.favorite = "ガチ恋ガーデン"
       user.prof_image = prof_image.read
-      user.activity_logs.build.save_activity_log(user.name " さんがガチメイトになりました！ようこそ！")
+      create_flg = 1
+    end
+    
+    if create_flg == 1
+    	user.activity_logs.build.save_activity_log(user.name " さんがガチメイトになりました！ようこそ！")
     end
   end
 
