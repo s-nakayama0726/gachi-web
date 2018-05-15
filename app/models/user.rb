@@ -29,7 +29,7 @@ class User < ApplicationRecord
     end
     
     if create_flg == 1
-    	user.activity_logs.build.save_activity_log(user.name + " さんがガチメイトになりました！ようこそ！")
+    	user.activity_logs.build.save_activity_log("ガチメイトになりました！ようこそ！")
     end
     
     return user;
