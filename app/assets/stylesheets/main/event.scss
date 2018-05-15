@@ -10,6 +10,34 @@ h2 {
   border:1px solid #000;
 }
 
+.guest_name {
+  font-family: 'ポプらむ';
+  color: white;
+  font-size: 1.5em;
+  border-bottom: solid 2px white;
+}
+
+.guest_credit {
+  font-size: 0.5em;
+  color: white;
+  border-bottom: solid 0.5px white;
+}
+
+.guest_info_area {
+  padding-top: 5px;
+  margin-bottom: 10px;
+  background: #ff0084; /* Old browsers */
+  background: -moz-linear-gradient(left, #ff0084 71%, #fcf9f9 100%); /* FF3.6-15 */
+  background: -webkit-linear-gradient(left, #ff0084 71%,#fcf9f9 100%); /* Chrome10-25,Safari5.1-6 */
+  background: linear-gradient(to right, #ff0084 71%,#fcf9f9 100%); /* W3C, IE10+, FF16+, Chrome26+, Opera12+, Safari7+ */
+  filter: progid:DXImageTransform.Microsoft.gradient( startColorstr='#ff0084', endColorstr='#fcf9f9',GradientType=1 ); /* IE6-9 */
+}
+
+.guest_intro_text {
+  font-size: 0.8em;
+  color: white;
+}
+
 .prof-img {
   width: 200px;
   height: 200px;
