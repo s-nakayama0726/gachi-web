@@ -14,8 +14,8 @@
 <br>
 <div class="container content_area">
     <h1>最新情報</h1>
-    <p><span>2018年5月7日：</span>次回6月24日開催情報解禁！</p>
-    <p><span>2018年5月7日：</span>ガチ恋ガーデン公式webサイト解禁！</p>
+    <p><span>2018年5月14日：</span>次回6月24日開催情報解禁！</p>
+    <p><span>2018年5月14日：</span>ガチ恋ガーデン公式webサイト解禁！</p>
 </div>
 <br>
 <div class="container content_area">
@@ -23,6 +23,7 @@
 	<% @activity_logs.each do | activity_log | %>
     <p><span><%= activity_log.created_at.strftime("%Y年%-m月%-d日") %>：</span><a href="/gachimate/show/<%= activity_log.user.id %>"><%= activity_log.user.name %></a> さんが<%= activity_log.log_message %></p>
     <% end %>
+    <p class="text-right"><a href="/activity_logs">全てのNewsを見る</a></p>
 </div>
 <br>
 <div class="container tweet content_area">

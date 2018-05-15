@@ -15,6 +15,12 @@ Rails.application.routes.draw do
     end
   end
   
+  # activity_logs
+  scope :activity_logs do
+    get "/" => "activity_logs#index"
+    get "/index" => "activity_logs#index"
+  end
+  
   # event
   get "/events/attend/:id" => "events#attend"
   get "/events/create" => "events#create"
@@ -25,6 +31,7 @@ Rails.application.routes.draw do
   end
   
   scope :gachimate do
+    get "/" => "users#index"
     get "/index" => "users#index"
     get "/show/:id" => "users#show"
     get "/mypage" => "users#mypage"

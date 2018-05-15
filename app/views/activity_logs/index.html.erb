@@ -1,0 +1,8 @@
+<div class="container">
+	<h1>ガチメイトNews</h1>
+</div>
+<div class="container">
+	<% @activity_logs.each do | activity_log | %>
+	<p><span><%= activity_log.created_at.strftime("%Y年%-m月%-d日") %>：</span><a href="/gachimate/show/<%= activity_log.user.id %>"><%= activity_log.user.name %></a> さんが<%= activity_log.log_message %></p>
+	<% end %>
+</div>
