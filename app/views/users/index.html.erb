@@ -31,8 +31,8 @@
 			<p class="attend_otaku_name"><%= user.name %></p>
 			<p class="attend_otaku_attribute">
 				<span class="label label-default"><%= user.favorite %>推し</span>
-				<% if @user.labels %>
-					<% @user.labels.each do | label | %>
+				<% if user.labels %>
+					<% user.labels.each do | label | %>
 						<span class="label label-warning"><%= label.name %></span>
 					<% end %>
 				<% end %>
