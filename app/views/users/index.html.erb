@@ -29,11 +29,14 @@
 		<a href="/gachimate/show/<%= user.id %>">
 			<%= image_tag(get_prof_image_user_path(user.id), :class => "pull-left") %>
 			<p class="attend_otaku_name"><%= user.name %></p>
-			<p class="attend_otaku_attribute"><span class="label label-default"><%= user.favorite %>推し</span>
-			<% @user.labels.each do | label | %>
-				<span class="label label-warning"><%= label.name %></span>
-			<% end %>
-			<p>
+			<p class="attend_otaku_attribute">
+				<span class="label label-default"><%= user.favorite %>推し</span>
+				<% if @user.labels %>
+					<% @user.labels.each do | label | %>
+						<span class="label label-warning"><%= label.name %></span>
+					<% end %>
+				<% end %>
+			</p>
 		</a>
 	</div>
 	<% end %>

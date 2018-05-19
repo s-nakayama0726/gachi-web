@@ -45,8 +45,10 @@
 	<div class="row">
 		<div class="col-xs-12">
 			<p class="text-center">
-			<% @user.labels.each do | label | %>
-				<span class="label label-warning"><%= label.name %></span>
+			<% if @user.labels %>
+				<% @user.labels.each do | label | %>
+					<span class="label label-warning"><%= label.name %></span>
+				<% end %>
 			<% end %>
 			</p>
 		</div>

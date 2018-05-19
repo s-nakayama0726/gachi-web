@@ -26,6 +26,17 @@
 	<p class="mate_name text-center"><%= @user.name %></p>
 	<%= image_tag(get_prof_image_user_path(@user.id), :class => "center-block") %>
 	<p class="mate_attribute text-center"><%= @user.favorite %> 推し</p>
+	<div class="row">
+		<div class="col-xs-12">
+			<p class="text-center">
+			<% if @user.labels %>
+				<% @user.labels.each do | label | %>
+					<span class="label label-warning"><%= label.name %></span>
+				<% end %>
+			<% end %>
+			</p>
+		</div>
+	</div>
 	<% if @login_user %>
 		<div class="row">
 			<%= form_tag("/users/" + @user.id.to_s + "/save_evaluation", :method => :post) do %>
