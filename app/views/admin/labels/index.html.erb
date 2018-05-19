@@ -1,0 +1,9 @@
+<br><br>
+<% @labels.each do | label | %>
+	<%= link_to label.name, admin_label_path(label) %><br>
+<% end %>
+
+<%= form_for([:admin, @label]) do | f | %>
+	<%= f.text_field :name %>
+	<%= f.submit("登録") %>
+<% end %>

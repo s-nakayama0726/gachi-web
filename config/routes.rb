@@ -25,9 +25,12 @@ Rails.application.routes.draw do
   get "/events/attend/:id" => "events#attend"
   get "/events/create" => "events#create"
 
-  scope :admin do
+  namespace :admin do
     get "/index" => "admin#index"
     get "/create" => "admin#create"
+    resources :labels do
+      post "set_label"
+    end
   end
   
   scope :gachimate do

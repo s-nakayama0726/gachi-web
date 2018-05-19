@@ -1,0 +1,9 @@
+<br><br>
+<%= @label.name %><br>
+
+<%= form_tag("/admin/labels/#{@label.id}/set_label") do %>
+	<% @users.each do |user| %>
+		<%= check_box_tag "user_ids[]", user.id %><%= user.name %><br>
+	<% end %>
+	<%= submit_tag "登録" %>
+<% end %>

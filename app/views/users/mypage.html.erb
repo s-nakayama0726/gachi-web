@@ -43,6 +43,15 @@
 		<% end %>
 	</div>
 	<div class="row">
+		<div class="col-xs-12">
+			<p class="text-center">
+			<% @user.labels.each do | label | %>
+				<span class="label label-warning"><%= label.name %></span>
+			<% end %>
+			</p>
+		</div>
+	</div>
+	<div class="row">
 		<div class="col-xs-offset-1 col-xs-4">
 			<p>推せるわ<span class="badge"><%= @user.get_good_evaluation_count %></p>
 		</div>

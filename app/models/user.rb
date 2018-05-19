@@ -8,6 +8,9 @@ class User < ApplicationRecord
   has_many :evaluation_logs
   has_many :users, through: :evaluation_logs
   
+  has_many :label_sets
+  has_many :labels, through: :label_sets
+  
   has_many :senders, :class_name => "EvaluationLog", :foreign_key => "sender"
   
   has_many :activity_logs
