@@ -19,11 +19,12 @@
 	<%= form_tag("/users", :method => :post) do %>
 		<button type="submit" class="btn btn-primary btn-lg btn-block">ツイッターでログイン</button>
 	<% end %>
+	<br>
 <% end %>
 </div>
 
 <div class="container profile">
-	<p class="mate_name text-center"><%= @user.name %></p>
+	<p class="mate_name text-center"><%= @user.name %>  <a href="https://twitter.com/?uid=<%= @user.uid %>"><img src="/assets/images/gachi-mate/blue_bird.png" id="tw"></a></p>
 	<%= image_tag(get_prof_image_user_path(@user.id), :class => "center-block") %>
 	<p class="mate_attribute text-center"><%= @user.favorite %> 推し</p>
 	<div class="row">
