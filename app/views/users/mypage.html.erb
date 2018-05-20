@@ -1,3 +1,43 @@
+<script>
+	$(document).ready(function(){
+	  var view_box = $('.view_box');
+	   
+	  $(".file").on('change', function(){
+	     var fileprop = $(this).prop('files')[0],
+	         find_img = $(this).next('img'),
+	         fileRdr = new FileReader();
+	     
+	     if(find_img.length){
+	        find_img.nextAll().remove();
+	        find_img.remove();
+	     }
+	    var img = '<img width="200" height="200" alt="" class="img_view"><br><a href="#" class="img_del">画像を削除する</a>';
+	    view_box.append(img);
+	     
+	    fileRdr.onload = function() {    
+	      view_box.find('img').attr('src', fileRdr.result);
+	      img_del(view_box); 
+	    }
+	    fileRdr.readAsDataURL(fileprop);  
+	  });
+	   
+	  function img_del(target)
+	  {
+	     target.find("a.img_del").on('click',function(){
+	 
+	      if(window.confirm('アップロードした画像を削除します。\nよろしいですか？'))
+	      {
+	         $(this).parent().find('input[type=file]').val('');
+	         $(this).parent().find('.img_view, br').remove();
+	         $(this).remove();
+	      }
+	 
+	      return false;
+	    });
+	  }  
+	});
+</script>
+
 <div class="container">
 	<h1>ガチメイト</h1>
 </div>
@@ -19,8 +59,53 @@
 
 
 <div class="container profile">
-	<p class="mate_name text-center"><%= @user.name %></p>
-	<%= image_tag(get_prof_image_user_path(@user.id), :class => "center-block") %>
+	<a href="#" data-toggle="modal" data-target="#name_form">
+		<p class="mate_attribute text-center"><span class="label label-default"><%= @user.name %></span></p>
+	</a>
+	<div class="modal fade" id="name_form"  tabindex="-1" role="dialog" aria-labelledby="NameFormModal" aria-hidden="true">
+		<%= form_tag("/gachimate/update_name/#{@user.id}", method: :post) do %>
+		<div class="modal-dialog" role="document">
+    		<div class="modal-content">
+    			<div class="modal-header">
+        			<p class="modal-title" id="NameFormModal">名前を変える</p>
+      			</div>
+      			<div class="modal-body">
+					<input id="input_name" name="name" type="text" class="text" value="<%= @user.name %>" />
+				</div>
+		      	<div class="modal-footer">
+        			<button type="button" class="btn btn-secondary" data-dismiss="modal">閉じる</button>
+        			<button type="submit" class="btn btn-primary">変更を保存</button>
+      			</div>
+			</div>
+		</div>
+		<% end %>
+	</div>
+	
+	<a href="#" data-toggle="modal" data-target="#image_form">
+		<%= image_tag(get_prof_image_user_path(@user.id), :class => "center-block") %>
+	</a>
+	<div class="modal fade" id="image_form"  tabindex="-1" role="dialog" aria-labelledby="ImageFormModal" aria-hidden="true">
+		<%= form_tag("/gachimate/update_image/#{@user.id}", method: :post, :multipart => true) do %>
+		<div class="modal-dialog" role="document">
+    		<div class="modal-content">
+    			<div class="modal-header">
+        			<p class="modal-title" id="ImageFormModal">プロフィール画像を変える</p>
+      			</div>
+      			<div class="modal-body">
+      				<div class="view_box">
+					  <input type="file" name="image" class="file"><br>
+					</div>
+				</div>
+		      	<div class="modal-footer">
+        			<button type="button" class="btn btn-secondary" data-dismiss="modal">閉じる</button>
+        			<button type="submit" class="btn btn-primary">変更を保存</button>
+      			</div>
+			</div>
+		</div>
+		<% end %>
+	</div>
+	
+	
 	<a href="#" data-toggle="modal" data-target="#favorite_form">
 		<p class="mate_attribute text-center"><span class="label label-default"><%= @user.favorite %>推し</span></p>
 	</a>
@@ -45,11 +130,9 @@
 	<div class="row">
 		<div class="col-xs-12">
 			<p class="text-center">
-			<% if @user.labels %>
 				<% @user.labels.each do | label | %>
 					<span class="label label-warning"><%= label.name %></span>
 				<% end %>
-			<% end %>
 			</p>
 		</div>
 	</div>

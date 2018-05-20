@@ -39,6 +39,8 @@ Rails.application.routes.draw do
     get "/show/:id" => "users#show"
     get "/mypage" => "users#mypage"
     post "/update_favorite/:id" => "users#update_favorite"
+    post "/update_name/:id" => "users#update_name"
+    post "/update_image/:id" => "users#update_image"
   end
   
   # Twitter auth

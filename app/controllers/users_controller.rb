@@ -45,6 +45,22 @@ class UsersController < ApplicationController
     redirect_to :action => "mypage"
   end
   
+  def update_name
+    user = User.find_by_id(params[:id])
+    user.name = params[:name]
+    user.save
+    
+    redirect_to :action => "mypage"
+  end
+  
+  def update_image
+    user = User.find_by_id(params[:id])
+    user.prof_image = params[:image].read
+    user.save
+    
+    redirect_to :action => "mypage"
+  end
+  
   def get_prof_image
     prof_image = User.find_by_id(params[:id]).prof_image
     send_data(prof_image, :disposition => "inline", :type => "image/jpg")
