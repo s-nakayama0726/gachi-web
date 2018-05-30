@@ -1,0 +1,116 @@
+<div class="container">
+<style type="text/css">
+	/* 未チェックの選択肢を薄く表示 */
+	.selection-group input[type="radio"] + label img {
+			  opacity: 0.5;
+			}
+ 
+			/* チェックされた選択肢を濃く表示 */
+	.selection-group input[type="radio"] {
+		display: none;
+	}
+	
+	.selection-group input[type="radio"]:checked + label img {
+	  opacity: 1;
+	}
+	
+	h1 {
+		font-family: '源ノ角ゴシック';
+		margin-top: 10px;
+	}
+
+	h2 {
+  		font-size: 1.5em;
+	}
+	
+	textarea {
+	  font-family: '';
+	}
+	
+	.top-area {
+		background-color: gainsboro;
+	}
+	
+	p {
+		font-size: 13px;
+	}
+	
+</style>
+<br>
+<div class="row top-area">
+	<div class="col-md-12 col-sm-12 col-xs-12">
+		<!--<h1>第一回「THE・オタク哲学」 <br>テーマ：声優さんについて</h1>-->
+		<img src="/assets/images/specials/special1/special1_img.jpg" class="img-responsive">
+	</div>
+</div>
+<br>
+<p>「声優」とは、映像作品に声の出演をする役者のことである。<br>またある時、「声優」とは、アイドルである。<br>また、ある人にとって「声優」とは、歌手である。<br></p>
+<p>―――世はまさに声優戦国時代。<br>数多の声優が日々声の出演をし、歌い、演じ、踊り、喋り、グラビアを披露する。</p>
+<p>我々オタクにとって、一体”声優”とは？</p>
+<p>2018年を生きるリアルなオタクが持つ、十人十色な声優への想い、聞かせて下さい。</p>
+<hr>
+<p>企画説明：</p>
+<p>声優さんについて、2つの質問からなるアンケートです。</p>
+<p>アンケートの結果は集計され、下記スケジュールで公開されます。</p>
+<p>中間発表：6月中旬</p>
+<p>結果発表・考察：6月24日開催　ガチ恋ガーデン内</p>
+<p>実際皆、声優さんのどんなところを推してるの？という実に純粋で、実に深い疑問から始まった本企画。是非ともアンケートにご協力下さい。</p>
+<br>
+<p>なお、コメント内容はイベント内、及びWEBサイトに公開されたり、今後ガチ恋ガーデンからオファーの材料とさせて頂く場合がございます。予めご了承ください。</p>
+<hr>
+		
+<%= form_tag("/send_special1_questionnaire", :method => :post) do %>
+	<h2>Q1.声優さんを好きになるキッカケ、最も多いのはどれ？<h2>
+	<div class="selection-group">
+		<div class="row">
+			<div class="col-md-6 col-sm-6 col-xs-6">
+				<input id="point1" name="point" class="point" value="voice" type="radio">
+				<label for="point1">
+					<img src="/assets/images/specials/special1/voice.jpg" class="img-responsive">
+				</label>
+			</div>
+			<div class="col-md-6 col-sm-6 col-xs-6">
+				<input id="point2" name="point" class="point" value="visual" type="radio">
+				<label for="point2">
+					<img src="/assets/images/specials/special1/visual.jpg" class="img-responsive">
+				</label>
+			</div>
+		</div>
+		<div class="row">
+			<div class="col-md-6 col-sm-6 col-xs-6">
+				<input id="point3" name="point" class="point" value="actor" type="radio">
+				<label for="point3">
+					<img src="/assets/images/specials/special1/actor.jpg" class="img-responsive">
+				</label>
+			</div>
+			<div class="col-md-6 col-sm-6 col-xs-6">
+				<input id="point4" name="point" class="point" value="music" type="radio">
+				<label for="point4">
+					<img src="/assets/images/specials/special1/music.jpg" class="img-responsive">
+				</label>
+			</div>
+		</div>
+		<div class="row">
+			<div class="col-md-offset-3 col-md-6 col-sm-offset-3 col-sm-6 col-xs-offset-3 col-xs-6">
+				<input id="point5" name="point" class="point" value="other" type="radio">
+				<label for="point5">
+					<img src="/assets/images/specials/special1/other.jpg" class="img-responsive">
+				</label>
+			</div>
+		</div>
+	</div>
+	<h2>Q2.あなたの推し声優、魅力はどんなところ？<h2>
+	<textarea placeholder="例：安野希世乃さんの安心感のある暖かい声を聴く度、「あ、俺、一生安野家でいたいな。」と、強く感じます。" rows="3" class="form-control" id="comment" name="comment"></textarea>
+	<br>
+	<button type="submit" class="btn btn-primary btn-lg btn-block">回答する</button>
+	<br>
+	<p>※回答にはガチメイトへのログインが必要です。</p>
+	<p>※ツイッター連携を行うことで、ガチメイトにログイン/登録されます。</p>
+<% end %>
+<hr>
+<div class="container">
+	<h2>回答者一覧</h2>
+	<hr>
+
+</div>
+</div>

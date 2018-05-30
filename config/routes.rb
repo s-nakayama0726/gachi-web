@@ -7,6 +7,9 @@ Rails.application.routes.draw do
   get "/events/:id" => "events#show"
   get "/otaku" => "mains#otaku"
   
+  get "/special1" => "specials#special1"
+  post "/send_special1_questionnaire" => "specials#save_special1_questionnaire"
+  
   # user
   resources :users do
     member do 
