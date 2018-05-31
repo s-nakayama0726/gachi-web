@@ -31,6 +31,7 @@ Rails.application.routes.draw do
   namespace :admin do
     get "/index" => "admin#index"
     get "/create" => "admin#create"
+    get "/special1" => "specials#special1"
     resources :labels do
       post "set_label"
     end
@@ -44,6 +45,7 @@ Rails.application.routes.draw do
     post "/update_favorite/:id" => "users#update_favorite"
     post "/update_name/:id" => "users#update_name"
     post "/update_image/:id" => "users#update_image"
+    post "/login" => "users#login"
   end
   
   # Twitter auth

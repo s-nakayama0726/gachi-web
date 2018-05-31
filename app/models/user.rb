@@ -14,6 +14,8 @@ class User < ApplicationRecord
   has_many :senders, :class_name => "EvaluationLog", :foreign_key => "sender"
   
   has_many :activity_logs
+  
+  has_many :questionnaires
 
   def self.find_or_create_from_auth(auth)
     provider = auth[:provider]
@@ -39,11 +41,11 @@ class User < ApplicationRecord
   end
 
   def get_good_evaluation_count
-    self.evaluation_logs.where(:evaluation_id => Evaluation.find_by(:evaluation_param => Evaluation::GOOD_EVALUATION).id).size if self.evaluation_logs
+    self.evaluation_logs.where(:evaluation_id => Evaluation.find_by(:evaluation_param => Evaluation::GOOD_EVALUATION)).size if self.evaluation_logs.exists? and self.evaluation_logs.where(:evaluation_id => Evaluation.find_by(:evaluation_param => Evaluation::GOOD_EVALUATION)).exists? 
   end
   
   def get_bad_evaluation_count
-    self.evaluation_logs.where(:evaluation_id => Evaluation.find_by(:evaluation_param => Evaluation::BAD_EVALUATION).id).size if self.evaluation_logs
+    self.evaluation_logs.where(:evaluation_id => Evaluation.find_by(:evaluation_param => Evaluation::BAD_EVALUATION).id).size if self.evaluation_logs.exists? and self.evaluation_logs.where(:evaluation_id => Evaluation.find_by(:evaluation_param => Evaluation::BAD_EVALUATION)).exists?
   end
   
 end

@@ -1,0 +1,22 @@
+<br><br>
+<table class="table">
+	<tr>
+		<td>回答ユーザー</td>
+		<td>選択</td>
+		<td>回答コメント</td>
+	<tr>
+	<% @questionnaires.each do | questionnaire | %>
+	<tr>
+		<td><%= questionnaire.user.name %></td>
+		<td>
+			<% case questionnaire.point 
+			when "ｖoice" then %>声
+			<% when "visual" then %>ビジュアル
+			<% when "actor" then %>演技
+			<% when "music" then %>音楽
+			<% when "other" then %>その他<% end %>
+		</td>
+		<td><%= questionnaire.comment %></td>
+	</tr>
+	<% end %>
+</table>

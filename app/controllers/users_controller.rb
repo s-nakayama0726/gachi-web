@@ -14,6 +14,10 @@ class UsersController < ApplicationController
     redirect_to from_url
   end
   
+  def login
+    redirect_to "/auth/twitter?from=" + request.referer and return
+  end
+  
   def index
     if session[:user_id]
       @user = User.find_by_id(session[:user_id])
