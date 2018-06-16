@@ -1,4 +1,8 @@
 class SpecialsController < ApplicationController
+  def index
+    
+  end
+  
   def special1
     @users = Questionnaire.all.collect do | questionnaire |
       questionnaire.user
