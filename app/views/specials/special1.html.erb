@@ -1,4 +1,40 @@
 <div class="container">
+<script type="text/javascript" src="https://www.google.com/jsapi"></script>
+<script type="text/javascript">
+     $(function(){
+          $(".tofu_open").click(function(){
+               $("#tofu_slidebox").slideToggle("slow");
+          });
+          $("#tofu_slidebox").click(function(){
+               $("#tofu_slidebox").slideToggle("slow");
+          });
+          $(".kisi_open").click(function(){
+               $("#kisi_slidebox").slideToggle("slow");
+          });
+          $("#kisi_slidebox").click(function(){
+               $("#kisi_slidebox").slideToggle("slow");
+          });
+     });
+     google.load("visualization", "1", {packages:["corechart"]});
+      google.setOnLoadCallback(drawChart);
+      function drawChart() {
+        var data = google.visualization.arrayToDataTable([
+          ['Task', 'Hours per Day'],
+          ['声', <%= Questionnaire.where(:point => "voice").size %>],
+          ['ビジュアル', <%= Questionnaire.where(:point => "visual").size %>],
+          ['演技', <%= Questionnaire.where(:point => "actor").size %>],
+          ['音楽', <%= Questionnaire.where(:point => "music").size %>],
+          ['その他', <%= Questionnaire.where(:point => "other").size %>]
+        ]);
+        var options = {
+          title: '推しポイント'
+        };
+ 
+        var chart = new google.visualization.PieChart(document.getElementById('piechart'));
+        chart.draw(data, options);
+      }
+
+</script>
 <style type="text/css">
 	/* 未チェックの選択肢を薄く表示 */
 	.selection-group input[type="radio"] + label img {
@@ -49,6 +85,29 @@
 	  text-decoration: underline;
 	}
 	
+	#tofu_slidebox{
+    	display:none;
+    	padding: 10px;
+    	background-color: white;
+    }
+    
+    #kisi_slidebox{
+    	display:none;
+    	padding: 10px;
+    	background-color: white;
+    }
+    
+    .answer_intro {
+    	background-color: pink;
+    	padding: 10px;
+    	margin-bottom: 5px;
+    }
+    
+    .intermediate {
+    	background-color: pink;
+    	padding: 10px;
+    	margin-bottom: 5px;
+    }
 </style>
 <br>
 <div class="row top-area">
@@ -79,6 +138,7 @@
 <br>
 <p>なお、コメント内容はイベント内、及びWEBサイトに公開されたり、今後ガチ恋ガーデンからオファーの材料とさせて頂く場合がございます。予めご了承ください。</p>
 <hr>
+<p>なお、コメント内容はイベント内、及びWEBサイトに公開されたり、今後ガチ恋ガーデンからオファーの材料とさせて頂く場合がございます。予めご了承ください。</p>
 
 <% unless session[:user_id] %>
 	<%= form_tag("/gachimate/login", :method => :post) do %>
@@ -134,6 +194,57 @@
 		<button type="submit" class="btn btn-primary btn-lg btn-block">回答する</button>
 	<% end %>
 <% end %>
+<hr>
+<h2>中間発表：</h2>
+<p>現在の推しポイント回答比率は以下のようになっています。</p>
+<div class="intermediate">
+<div id="piechart"></div>
+</div>
+
+<h3>ーご回答内容紹介</h3>
+<p>オタクから届いたご回答を紹介致します。</p>
+<p>様々なご回答を頂いておりますが、中間発表では御二人だけピックアップし、ご紹介致します。</p>
+<div class="intermediate">
+<div class="answer_intro">
+	<h3>回答者：<a href="http://gachi-love.work/gachimate/show/8">きし</a></h3>
+	<img class="center-block img-responsive" width="200px" height="200px" src="http://gachi-love.work/users/8/get_prof_image"><br>
+	<button class="btn kisi_open center-block">∇回答∇</button>
+	<div id="kisi_slidebox">
+	<p>推しポイント：ビジュアル</p>
+	<p>大抵の声優って下積み時代があってどんどんブレイクしていくと思うんですよ。 </p>
+	<p>晴れの舞台に上がるまでの下積みって、楽しい時よりも辛い時の方が多いと思うんです。 </p>
+	<p>そんな辛い時をいつか晴れ舞台に立てる事を夢見て頑張る姿、それって凄い美しくないですか？？</p>
+	<p>同僚が晴れ舞台に立っているのを横目にひたむきに頑張る女性。</p>
+	<p>その人が夢の表舞台に立った時こそ僕が1番幸せを感じる時です。</p>
+	<p>そんなひたむきに頑張る新人女性声優全員を僕は"推し"ています。</p>
+	</div>
+</div>
+</div>
+<div class="intermediate">
+<div class="answer_intro">
+	<p>回答者：<a href="http://gachi-love.work/gachimate/show/19">とうふ</a></p>
+	<img class="center-block img-responsive" width="200px" height="200px" src="http://gachi-love.work/users/19/get_prof_image"><br>
+	<button class="btn tofu_open center-block">∇回答∇</button>
+	<div id="tofu_slidebox">
+	<p>推しポイント：音楽</p>
+	<p>雨宮天さんを意識し始めたのはミリオンライブ1stでの麻倉ももさんとのきゅんっ！ヴァンパイアガールの時でした。</p>
+	<p>その時は声優さんがどうこうというよりももともとのコンテンツが好きなオタクだったので自分のなかではとても衝撃的な出会いだったと思います。 </p>
+	<p>それからラジオを聞いたり、TrySailというユニットを結成することになったり、アーティストとしてデビューしたりと、タイミングも最高だったのかなといま思い返せば感じます。 </p>
+	<p>最初はビジュアルとか、ギャップのある可愛さが好きなんだよな～と思ってたんですが、雑誌のインタビュー記事を追いかけたり、ブログの記事を読むなかでこの人の自己実現に対する欲求って本当にすごいな…と思うようになって、そういう人柄に何時からか惹かれるようになっていました。</p>
+	<p>ソロアルバムの発売を経て遂にソロライブ、とても真面目で誠実な方で応援してくれるファンに対して感謝を伝えたい、そういうライブ中の姿勢に僕はいったいこれだけのものをもらってばっかりで本当にどうしたらいいんだろうと悩む日々でした。</p>
+	<p>あくまで相手は芸能人で、こっちは一般のオタク、できることといっても特別ななにかはできなくて、でもずっと応援し続けることはできるし、雨宮天さんの声や演技、曲や生き様から自分も幸せになることがお返しになるんじゃないかなというスタンスでいまは応援を続けています。 </p>
+	<p>長々と自分語りが長くなりましたが雨宮天さんの魅力は ・とても誠実で自己実現に対する欲求が強く、
+	応援したくなる ・ビジュアルとギャップのある言動や振る舞いがかわいい！ ・ソロ楽曲はもはや個性的！といって良いほどの雨宮天ワールドが広げられるのでハマったら沼 ・かわいい、すき。 の4つがすぐ思い付くところでしょうか、細かい話をするとまだまだありますがその辺りは文字だけだとほんとに長くなっちゃうので機会があれば……。</p>
+	<p>ガチ恋って言われそうですが真面目に単推しするタイプのオタクなら絶対後悔しないと思います！セカンドアルバムの発売や全国ツアーも決まってますので今後の更なる活躍に期待です！</p>
+	</div>
+</div>
+</div>
+<hr>
+<p>以上、中間発表でした！次回ガチ恋ガーデン開催まで残り一週間、まだまだご回答お待ちしております！</p>
+<p>最終発表は次回2018年6月24日のガチ恋ガーデン内にて発表致します！</p>
+<hr>
+<br>
+
 <hr>
 <div class="container">
 	<h2>回答者一覧</h2>
